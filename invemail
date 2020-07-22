@@ -1,0 +1,11 @@
+#!/bin/bash
+#This shell script will identify the invalid email addresses
+#Rule1 Special characters such as ._% not allowed
+#Rule 2  Characters,numbers and special characters such as . and - allowed in the domain part
+#Rule 3 Only Characters allowed in the domain address
+cp email_add.txt email_add.bkp
+rrr="/root/email_add.txt"
+while IFS= read -r rrr
+do
+grep -E -o "\b[._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,6}\b" email_add.txt > inval.txt
+done < "$rrr"
